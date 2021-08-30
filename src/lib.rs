@@ -1,9 +1,10 @@
-use std::{collections::HashMap, convert::TryFrom, io};
+use std::{convert::TryFrom, io};
+use indexmap::IndexMap;
 pub mod cli;
 use serde_json::Serializer;
 use serde::ser::*;
 
-type Record = HashMap<String, String>;
+type Record = IndexMap<String, String>;
 
 
 pub fn load<R: io::Read>(reader: &mut csv::Reader<R>) -> anyhow::Result<Vec<Record>> {
